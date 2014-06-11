@@ -9,6 +9,7 @@ META.yml
 Makefile.PL
 README
 dist.ini
+dist.ini.meta
 lib/CPAN/Distribution/ReleaseHistory.pm
 lib/CPAN/Distribution/ReleaseHistory/ReleaseIterator.pm
 maint/perlcritic.rc.gen.pl
