@@ -5,6 +5,8 @@ use utf8;
 
 package CPAN::Distribution::ReleaseHistory::ReleaseIterator;
 
+our $VERSION = '0.001000';
+
 # ABSTRACT: A container to iterate a collection of releases for a single distribution
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -13,9 +15,7 @@ use Moo;
 use CPAN::DistnameInfo;
 use CPAN::Releases::Latest::Release;
 
-has 'result_set' => ( is => 'ro',  required => 1 );
-
-
+has 'result_set' => ( is => 'ro', required => 1 );
 
 sub next_release {
   my ($self) = @_;
