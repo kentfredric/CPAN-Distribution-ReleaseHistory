@@ -11,7 +11,7 @@ our $VERSION = '0.001000';
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
-use Moo;
+use Moo qw( has );
 use CPAN::DistnameInfo;
 use CPAN::Releases::Latest::Release;
 
@@ -22,22 +22,19 @@ sub next_release {
   my $result = $self->result_set->next;
   return if not $result;
 
-scannext: {
-    my $maturity = $result->maturity;
-    my $path     = $result->download_url;
-    $path =~ s!^.*/authors/id/!!;
-    my $distinfo = CPAN::DistnameInfo->new($path);
-    my $distname =
-      defined($distinfo) && defined( $distinfo->dist )
-      ? $distinfo->dist
-      : $result->name;
-    return CPAN::Releases::Latest::Release->new(
-      distname  => $distname,
-      path      => $path,
-      timestamp => $result->stat->{mtime},
-      size      => $result->stat->{size},
-    );
-  }
+  my $path     = $result->download_url;
+  $path =~ s{\A.*/authors/id/}{}msx;
+  my $distinfo = CPAN::DistnameInfo->new($path);
+  my $distname =
+    defined($distinfo) && defined( $distinfo->dist )
+    ? $distinfo->dist
+    : $result->name;
+  return CPAN::Releases::Latest::Release->new(
+    distname  => $distname,
+    path      => $path,
+    timestamp => $result->stat->{mtime},
+    size      => $result->stat->{size},
+  );
 }
 
 no Moo;
