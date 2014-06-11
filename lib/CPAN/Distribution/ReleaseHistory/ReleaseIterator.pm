@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package CPAN::Distribution::ReleaseHistory::ReleaseIterator;
-$CPAN::Distribution::ReleaseHistory::ReleaseIterator::VERSION = '0.001000';
+
 # ABSTRACT: A container to iterate a collection of releases for a single distribution
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY

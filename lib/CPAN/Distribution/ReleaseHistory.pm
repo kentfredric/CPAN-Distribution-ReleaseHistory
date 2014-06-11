@@ -2,8 +2,12 @@ use strict;
 use warnings;
 
 package CPAN::Distribution::ReleaseHistory;
-$CPAN::Distribution::ReleaseHistory::VERSION = '0.001000';
+
+our $VERSION = '0.001000';
+
 # ABSTRACT: Show the release history of a single distribution
+
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use Moo 1.000008 qw( has );
 
