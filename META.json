@@ -81,7 +81,6 @@
       "runtime" : {
          "requires" : {
             "CPAN::DistnameInfo" : "0",
-            "CPAN::Releases::Latest::Release" : "0",
             "Moo" : "1.000008",
             "Search::Elasticsearch" : "0",
             "Search::Elasticsearch::Scroll" : "0",
@@ -112,6 +111,10 @@
          "file" : "lib/CPAN/Distribution/ReleaseHistory.pm",
          "version" : "0.001000"
       },
+      "CPAN::Distribution::ReleaseHistory::Release" : {
+         "file" : "lib/CPAN/Distribution/ReleaseHistory/Release.pm",
+         "version" : "0.001000"
+      },
       "CPAN::Distribution::ReleaseHistory::ReleaseIterator" : {
          "file" : "lib/CPAN/Distribution/ReleaseHistory/ReleaseIterator.pm",
          "version" : "0.001000"
@@ -135,7 +138,6 @@
          "CPAN::DistnameInfo" : "0.12",
          "CPAN::Meta" : "2.141520",
          "CPAN::Meta::Requirements" : "2.125",
-         "CPAN::Releases::Latest::Release" : "0.06",
          "Dist::Zilla::App::Command::bakeini" : "0.001000",
          "Dist::Zilla::Plugin::Authority" : "1.006",
          "Dist::Zilla::Plugin::AutoPrereqs" : "5.019",
@@ -357,6 +359,7 @@
                "Dist::Zilla::Plugin::Test::Compile::PerFile" : {
                   "file" : [
                      "lib/CPAN/Distribution/ReleaseHistory.pm",
+                     "lib/CPAN/Distribution/ReleaseHistory/Release.pm",
                      "lib/CPAN/Distribution/ReleaseHistory/ReleaseIterator.pm"
                   ],
                   "path_translator" : "base64_filter",

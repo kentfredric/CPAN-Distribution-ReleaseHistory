@@ -21,7 +21,6 @@ my %WriteMakefileArgs = (
   "NAME" => "CPAN::Distribution::ReleaseHistory",
   "PREREQ_PM" => {
     "CPAN::DistnameInfo" => 0,
-    "CPAN::Releases::Latest::Release" => 0,
     "Moo" => "1.000008",
     "Search::Elasticsearch" => 0,
     "Search::Elasticsearch::Scroll" => 0,
@@ -45,7 +44,6 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "CPAN::DistnameInfo" => 0,
-  "CPAN::Releases::Latest::Release" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec::Functions" => 0,
   "List::Util" => 0,

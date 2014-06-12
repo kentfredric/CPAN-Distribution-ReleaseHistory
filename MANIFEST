@@ -13,6 +13,7 @@ dist.ini
 dist.ini.meta
 examples/bench.pl
 lib/CPAN/Distribution/ReleaseHistory.pm
+lib/CPAN/Distribution/ReleaseHistory/Release.pm
 lib/CPAN/Distribution/ReleaseHistory/ReleaseIterator.pm
 maint-travis-ci/.gitrepo
 maint-travis-ci/.perltidyrc
@@ -36,6 +37,7 @@ maint/perlcritic.rc.gen.pl
 misc/perlcritic.deps
 perlcritic.rc
 t/00-compile/lib_CPAN_Distribution_ReleaseHistory_ReleaseIterator_pm.t
+t/00-compile/lib_CPAN_Distribution_ReleaseHistory_Release_pm.t
 t/00-compile/lib_CPAN_Distribution_ReleaseHistory_pm.t
 t/00-report-prereqs.t
 t/live-moo-history.t

@@ -110,7 +110,6 @@ my $static_prereqs = do { my $x = {
        'runtime' => {
                       'requires' => {
                                       'CPAN::DistnameInfo' => '0',
-                                      'CPAN::Releases::Latest::Release' => '0',
                                       'Moo' => '1.000008',
                                       'Search::Elasticsearch' => '0',
                                       'Search::Elasticsearch::Scroll' => '0',
