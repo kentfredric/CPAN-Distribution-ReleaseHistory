@@ -1,5 +1,5 @@
 Release history for CPAN-Distribution-ReleaseHistory
 
-0.001000 2014-06-12T11:34:14Z
- - First version.
+0.001000 2014-06-12T11:43:01Z
+ - First version. Uses a hybrid of direct Search::Elasticsearch and MetaCPAN::Client for now, but MetaCPAN::Client will probably be removed as redundant eventually.
 
