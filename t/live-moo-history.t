@@ -3,12 +3,10 @@ use warnings;
 
 use Test::More;
 
-should_test: {
-  for my $key (qw( AUTHOR RELEASE NETWORK )) {
-    last should_test if $ENV{ $key . '_TESTING' };
-  }
-  plan skip_all => 'set one of {NETWORK,RELEASE,AUTHOR}_TESTING to enable this test';
-}
+plan skip_all => 'NO_NETWORK_TESTING set. Skipping network dependent tests'
+  if $ENV{NO_NETWORK_TESTING};
+
+diag "set NO_NETWORK_TESTING to disable this test";
 
 # ABSTRACT: Show live Moo history
 
@@ -69,14 +67,13 @@ my $ri = $rh->release_iterator;
 my $i = 0;
 while ( my $r = $ri->next_release ) {
   last if $i > 11;
+  $i++;
   subtest "$i-th release: " . $r->distinfo->version => sub {
     cmp_ok( $r->timestamp, '<=', 1321316878, "Prior to Tue Nov 15 00:27:58 2011" );
     is( $r->distinfo->cpanid, 'MSTROUT', "Was released by MST" );
     cmp_ok( $r->distinfo->version, '>=', 0.009000, "V >= 0.009000" );
     cmp_ok( $r->distinfo->version, '<=', 0.009012, "V <= 0.009012" );
-
   };
-  $i++;
 }
 
 done_testing;
