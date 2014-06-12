@@ -25,7 +25,7 @@ has 'scroller' => ( is => 'ro', required => 1 );
 
 =method C<next_release>
 
-Returns a L<< C<CPAN::Releases::Latest::Release>|CPAN::Releases::Latest::Release >>
+Returns a L<< C<CPAN::Distribution::ReleaseHistory::Release>|CPAN::Distribution::ReleaseHistory::Release >>
 
   my $item = $release_iterator->next_release();
 

@@ -31,7 +31,7 @@ C<MetaCPAN> to resolve its information.
   # Returns a CPAN::Distribution::ReleaseHistory::ReleaseIterator
   my $iterator = $release_history->release_iterator();
 
-  # $release is an instance of CPAN::Releases::Latest::Release
+  # $release is an instance of CPAN::Distribution::ReleaseHistory::Release
   while ( my $release = $iterator->next_release() ) {
     print $release->distname();                   # Dist-Zilla
     print $release->path();                       # R/RJ/RJBS/Dist-Zilla-1.000.tar.gz
