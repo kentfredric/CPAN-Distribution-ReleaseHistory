@@ -201,13 +201,7 @@ sub _mk_query_distribution {
 
   require Search::Elasticsearch::Scroll;
 
-  my $scroller = $self->es->scroll_helper(%scrollargs);
-  require MetaCPAN::Client::ResultSet;
-  require MetaCPAN::Client::Release;
-  return MetaCPAN::Client::ResultSet->new(
-    scroller => $scroller,
-    type     => 'release',
-  );
+  return $self->es->scroll_helper(%scrollargs);
 }
 
 no Moo;

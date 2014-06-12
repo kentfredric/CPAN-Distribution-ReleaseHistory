@@ -112,7 +112,6 @@ my $static_prereqs = do { my $x = {
                                       'CPAN::DistnameInfo' => '0',
                                       'CPAN::Releases::Latest::Release' => '0',
                                       'MetaCPAN::Client::Release' => '0',
-                                      'MetaCPAN::Client::ResultSet' => '0',
                                       'Moo' => '1.000008',
                                       'Search::Elasticsearch' => '0',
                                       'Search::Elasticsearch::Scroll' => '0',
