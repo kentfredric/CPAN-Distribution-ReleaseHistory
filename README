@@ -10,6 +10,102 @@ SYNOPSIS
     tailored to use a single distribution name, and uses "MetaCPAN" to
     resolve its information.
 
+      use CPAN::Distribution::ReleaseHistory;
+
+      my $release_history = CPAN::Distribution::ReleaseHistory->new(
+        distribution => 'Dist-Zilla',
+        # ua          => a HTTP::Tiny instance to use for requests
+        # es          => a Search::Elasticsearch instance
+        # scroll_size => 1000  : How many results to fetch per HTTP request
+        # sort        => 'desc': Direction of sort ( vs 'asc' and undef )
+      );
+
+      # Returns a CPAN::Distribution::ReleaseHistory::ReleaseIterator
+      my $iterator = $release_history->release_iterator();
+
+      # $release is an instance of CPAN::Releases::Latest::Release
+      while ( my $release = $iterator->next_release() ) {
+        print $release->distname();                   # Dist-Zilla
+        print $release->path();                       # R/RJ/RJBS/Dist-Zilla-1.000.tar.gz
+        print scalar gmtime $release->timestamp();    # Timestamp is Unixtime.
+        print $release->size();                       # 30470 ( bytes )
+        my $distinfo = $release->distinfo();          # CPAN::DistInfo object
+      }
+
+METHODS
+  "release_iterator"
+    Perform the query and return a new
+    "CPAN::Distribution::ReleaseHistory::ReleaseIterator" to walk over the
+    results.
+
+      my $iterator = $object->release_iterator
+
+ATTRIBUTES
+  "ua"
+    A "HTTP::Tiny" compatible user agent.
+
+  "es"
+    A Search::Elasticsearch instance.
+
+  "scroll_size"
+    Volume of results to fetch per request.
+
+      default: 1000
+
+    Larger values give slower responses but faster total execution time.
+
+    Smaller values give faster responses but slower total execution time. (
+    Due to paying ping time both ways per request in addition to other
+    per-request overheads that are constant sized )
+
+  "distribution"
+    A string exactly matching a name of a CPAN distribution.
+
+    example:
+
+      Dist-Zilla
+      MetaCPAN-Client
+      Search-Elasticsearch
+      WWW-Mechanize-Cached
+
+  "sort"
+    The implicit sort direction of the output.
+
+      default: 'desc' # The most recent release is returned first.
+
+    Alternative options:
+
+      'asc' # The oldest release is returned first
+      undef # Results are unsorted
+
+   "undef"
+    Opting for "undef" for this value will give a slight speed up to the
+    responsiveness of queries.
+
+    Though this benefit will only be observed in conjunction with low values
+    of "scroll_size"
+
+      scroll_size > N_results : undef slower than 'desc'
+      scroll_size ~ 10        : undef faster than 'desc'
+      scroll_size ~ 20        : undef marginally faster than 'desc'
+
+    --
+
+      test_sorted(){
+        perl -Ilib -MCPAN::Distribution::ReleaseHistory \
+          -E' $rs = CPAN::Distribution::ReleaseHistory->new( scroll_size => 10, distribution => q[Dist-Zilla], sort => q[desc] )->release_iterator; say $_->size while $_ = $rs->next_release ' >> /dev/null
+      }
+      test_unsorted(){
+        perl -Ilib -MCPAN::Distribution::ReleaseHistory \
+          -E' $rs = CPAN::Distribution::ReleaseHistory->new( scroll_size => 10, distribution => q[Dist-Zilla], sort => undef )->release_iterator; say $_->size while $_ = $rs->next_release ' >> /dev/null
+      }
+      for i in $(seq 0 10); do
+        echo "sorted";
+        time test_sorted;
+        echo "unsorted"
+        time test_unsorted;
+      done
+
 AUTHOR
     Kent Fredric <kentfredric@gmail.com>
 
