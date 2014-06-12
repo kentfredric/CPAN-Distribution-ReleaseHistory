@@ -282,7 +282,7 @@ addition to other per-request overheads that are constant sized )
 
 =head2 C<distribution>
 
-A string exactly matching a name of a CPAN distribution.
+A string exactly matching a name of a C<CPAN> distribution.
 
 example:
 

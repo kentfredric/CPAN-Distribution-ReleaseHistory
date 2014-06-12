@@ -59,7 +59,7 @@ ATTRIBUTES
     per-request overheads that are constant sized )
 
   "distribution"
-    A string exactly matching a name of a CPAN distribution.
+    A string exactly matching a name of a "CPAN" distribution.
 
     example:
 
