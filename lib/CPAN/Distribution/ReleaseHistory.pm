@@ -42,66 +42,6 @@ C<MetaCPAN> to resolve its information.
 
 =cut
 
-=attr C<ua>
-
-A C<HTTP::Tiny> compatible user agent.
-
-=cut
-
-=method C<has_ua>
-
-Determine if user specified a custom C<UserAgent>
-
-=cut
-
-has 'ua' => (
-  is        => 'ro',
-  predicate => 'has_ua',
-);
-
-=attr C<es>
-
-A Search::Elasticsearch instance.
-
-=cut
-
-has 'es' => (
-  is      => 'ro',
-  lazy    => 1,
-  builder => sub {
-    my ($self) = @_;
-    my %args = (
-      nodes            => 'api.metacpan.org',
-      cxn_pool         => 'Static::NoPing',
-      send_get_body_as => 'POST',
-    );
-    if ( $self->has_ua ) {
-      $args{handle} = $self->ua;
-    }
-    require Search::Elasticsearch;
-    return Search::Elasticsearch->new(%args);
-  },
-);
-
-=attr C<scroll_size>
-
-Volume of results to fetch per request.
-
-  default: 1000
-
-Larger values give slower responses but faster total execution time.
-
-Smaller values give faster responses but slower total execution time. ( Due to paying ping time both ways per request in
-addition to other per-request overheads that are constant sized )
-
-=cut
-
-has 'scroll_size' => (
-  is      => 'ro',
-  lazy    => 1,
-  builder => sub { 1000 },
-);
-
 =attr C<distribution>
 
 A string exactly matching a name of a C<CPAN> distribution.
@@ -160,6 +100,84 @@ has 'sort' => (
   builder => sub { 'desc' },
 );
 
+=attr C<scroll_size>
+
+Volume of results to fetch per request.
+
+  default: 1000
+
+Larger values give slower responses but faster total execution time.
+
+Smaller values give faster responses but slower total execution time. ( Due to paying ping time both ways per request in
+addition to other per-request overheads that are constant sized )
+
+=cut
+
+has 'scroll_size' => (
+  is      => 'ro',
+  lazy    => 1,
+  builder => sub { 1000 },
+);
+
+=method C<release_iterator>
+
+Perform the query and return a new
+L<< C<CPAN::Distribution::ReleaseHistory::ReleaseIterator>|CPAN::Distribution::ReleaseHistory::ReleaseIterator >> to walk over
+the results.
+
+
+  my $iterator = $object->release_iterator
+
+=cut
+
+sub release_iterator {
+  my ($self) = @_;
+  require CPAN::Distribution::ReleaseHistory::ReleaseIterator;
+  return CPAN::Distribution::ReleaseHistory::ReleaseIterator->new(
+    result_set => $self->_mk_query_distribution( $self->distribution ) );
+}
+
+=attr C<ua>
+
+A C<HTTP::Tiny> compatible user agent.
+
+=cut
+
+=method C<has_ua>
+
+Determine if user specified a custom C<UserAgent>
+
+=cut
+
+has 'ua' => (
+  is        => 'ro',
+  predicate => 'has_ua',
+);
+
+=attr C<es>
+
+A Search::Elasticsearch instance.
+
+=cut
+
+has 'es' => (
+  is      => 'ro',
+  lazy    => 1,
+  builder => sub {
+    my ($self) = @_;
+    my %args = (
+      nodes            => 'api.metacpan.org',
+      cxn_pool         => 'Static::NoPing',
+      send_get_body_as => 'POST',
+    );
+    if ( $self->has_ua ) {
+      $args{handle} = $self->ua;
+    }
+    require Search::Elasticsearch;
+    return Search::Elasticsearch->new(%args);
+  },
+);
+
 sub _mk_query_distribution {
   my ( $self, $distribution ) = @_;
 
@@ -190,24 +208,6 @@ sub _mk_query_distribution {
     scroller => $scroller,
     type     => 'release',
   );
-}
-
-=method C<release_iterator>
-
-Perform the query and return a new
-L<< C<CPAN::Distribution::ReleaseHistory::ReleaseIterator>|CPAN::Distribution::ReleaseHistory::ReleaseIterator >> to walk over
-the results.
-
-
-  my $iterator = $object->release_iterator
-
-=cut
-
-sub release_iterator {
-  my ($self) = @_;
-  require CPAN::Distribution::ReleaseHistory::ReleaseIterator;
-  return CPAN::Distribution::ReleaseHistory::ReleaseIterator->new(
-    result_set => $self->_mk_query_distribution( $self->distribution ) );
 }
 
 no Moo;

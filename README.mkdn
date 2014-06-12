@@ -35,10 +35,6 @@ This is similar in concept to `CPAN::ReleaseHistory`, except its tailored to use
 
 # METHODS
 
-## `has_ua`
-
-Determine if user specified a custom `UserAgent`
-
 ## `release_iterator`
 
 Perform the query and return a new
@@ -47,26 +43,11 @@ the results.
 
     my $iterator = $object->release_iterator
 
+## `has_ua`
+
+Determine if user specified a custom `UserAgent`
+
 # ATTRIBUTES
-
-## `ua`
-
-A `HTTP::Tiny` compatible user agent.
-
-## `es`
-
-A Search::Elasticsearch instance.
-
-## `scroll_size`
-
-Volume of results to fetch per request.
-
-    default: 1000
-
-Larger values give slower responses but faster total execution time.
-
-Smaller values give faster responses but slower total execution time. ( Due to paying ping time both ways per request in
-addition to other per-request overheads that are constant sized )
 
 ## `distribution`
 
@@ -110,6 +91,25 @@ Though this benefit will only be observed in conjunction with low values of `scr
 
      100 desc average 0.02279 /each   43.873 items/sec
     100 undef average 0.02510 /each   39.846 items/sec
+
+## `scroll_size`
+
+Volume of results to fetch per request.
+
+    default: 1000
+
+Larger values give slower responses but faster total execution time.
+
+Smaller values give faster responses but slower total execution time. ( Due to paying ping time both ways per request in
+addition to other per-request overheads that are constant sized )
+
+## `ua`
+
+A `HTTP::Tiny` compatible user agent.
+
+## `es`
+
+A Search::Elasticsearch instance.
 
 # AUTHOR
 
