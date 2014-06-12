@@ -46,7 +46,7 @@ sub next_release {
     defined($distinfo) && defined( $distinfo->dist )
     ? $distinfo->dist
     : $data_hash->{name};
-  return CPAN::Distribution::Releases::Release->new(
+  return CPAN::Distribution::ReleaseHistory::Release->new(
     distname  => $distname,
     path      => $path,
     timestamp => $data_hash->{stat}->{mtime},

@@ -101,7 +101,7 @@ version 0.001000
 This is mostly a workalike for L<< C<CPAN::Latest::ReleaseHistory::Release>|CPAN::Latest::ReleaseHistory::Release >>, except without the dependency on L<< C<MetaCPAN::Client>|MetaCPAN::Client >>
 
   my $release = $releaseiterator->next_release;
-  
+
   print $release->distname();                   # Dist-Zilla
   print $release->path();                       # R/RJ/RJBS/Dist-Zilla-1.000.tar.gz
   print scalar gmtime $release->timestamp();    # Timestamp is Unixtime.
