@@ -10,6 +10,7 @@ Makefile.PL
 README
 dist.ini
 dist.ini.meta
+examples/bench.pl
 lib/CPAN/Distribution/ReleaseHistory.pm
 lib/CPAN/Distribution/ReleaseHistory/ReleaseIterator.pm
 maint-travis-ci/.gitrepo

@@ -47,6 +47,7 @@ use Moo 1.000008 qw( has );
 
 
 
+
 has 'ua' => (
   is        => 'ro',
   predicate => 'has_ua',
@@ -88,6 +89,7 @@ has 'es' => (
 
 
 
+
 has 'scroll_size' => (
   is      => 'ro',
   lazy    => 1,
@@ -111,12 +113,6 @@ has 'distribution' => (
   is       => 'ro',
   required => 1,
 );
-
-
-
-
-
-
 
 
 
@@ -228,7 +224,8 @@ version 0.001000
 
 =head1 SYNOPSIS
 
-This is similar in concept to C<CPAN::ReleaseHistory>, except its tailored to use a single distribution name, and uses C<MetaCPAN> to resolve its information.
+This is similar in concept to C<CPAN::ReleaseHistory>, except its tailored to use a single distribution name, and uses
+C<MetaCPAN> to resolve its information.
 
   use CPAN::Distribution::ReleaseHistory;
 
@@ -280,7 +277,8 @@ Volume of results to fetch per request.
 
 Larger values give slower responses but faster total execution time.
 
-Smaller values give faster responses but slower total execution time. ( Due to paying ping time both ways per request in addition to other per-request overheads that are constant sized )
+Smaller values give faster responses but slower total execution time. ( Due to paying ping time both ways per request in
+addition to other per-request overheads that are constant sized )
 
 =head2 C<distribution>
 
@@ -310,26 +308,20 @@ Opting for C<undef> for this value will give a slight speed up to the responsive
 
 Though this benefit will only be observed in conjunction with low values of C<scroll_size>
 
-  scroll_size > N_results : undef slower than 'desc'
-  scroll_size ~ 10        : undef faster than 'desc'
-  scroll_size ~ 20        : undef marginally faster than 'desc'
+    5 desc average 0.08625 /each   11.594 items/sec
+   5 undef average 0.03856 /each   25.937 items/sec
 
---
+   10 desc average 0.05384 /each   18.573 items/sec
+  10 undef average 0.03773 /each   26.507 items/sec
 
-  test_sorted(){
-    perl -Ilib -MCPAN::Distribution::ReleaseHistory \
-      -E' $rs = CPAN::Distribution::ReleaseHistory->new( scroll_size => 10, distribution => q[Dist-Zilla], sort => q[desc] )->release_iterator; say $_->size while $_ = $rs->next_release ' >> /dev/null
-  }
-  test_unsorted(){
-    perl -Ilib -MCPAN::Distribution::ReleaseHistory \
-      -E' $rs = CPAN::Distribution::ReleaseHistory->new( scroll_size => 10, distribution => q[Dist-Zilla], sort => undef )->release_iterator; say $_->size while $_ = $rs->next_release ' >> /dev/null
-  }
-  for i in $(seq 0 10); do
-    echo "sorted";
-    time test_sorted;
-    echo "unsorted"
-    time test_unsorted;
-  done
+   20 desc average 0.03856 /each   25.934 items/sec
+  20 undef average 0.02758 /each   36.252 items/sec
+
+   50 desc average 0.02579 /each   38.777 items/sec
+  50 undef average 0.02547 /each   39.267 items/sec
+  
+  100 desc average 0.02279 /each   43.873 items/sec
+ 100 undef average 0.02510 /each   39.846 items/sec
 
 =head1 AUTHOR
 

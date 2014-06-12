@@ -22,7 +22,7 @@ sub next_release {
   my $result = $self->result_set->next;
   return if not $result;
 
-  my $path     = $result->download_url;
+  my $path = $result->download_url;
   $path =~ s{\A.*/authors/id/}{}msx;
   my $distinfo = CPAN::DistnameInfo->new($path);
   my $distname =
