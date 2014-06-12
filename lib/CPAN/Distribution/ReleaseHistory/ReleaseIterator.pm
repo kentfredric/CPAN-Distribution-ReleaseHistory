@@ -35,21 +35,22 @@ sub next_release {
   my ($self) = @_;
   my $scroll_result = $self->result_set->next;
   return if not $scroll_result;
-  require MetaCPAN::Client::Release;
-  my $result = MetaCPAN::Client::Release->new_from_request( $scroll_result->{'_source'} || $scroll_result->{'fields'} );
-  return if not $result;
-  my $path = $result->download_url;
+
+  my $data_hash = $scroll_result->{'_source'} || $scroll_result->{'fields'};
+  return if not $data_hash;
+
+  my $path = $data_hash->{download_url};
   $path =~ s{\A.*/authors/id/}{}msx;
   my $distinfo = CPAN::DistnameInfo->new($path);
   my $distname =
     defined($distinfo) && defined( $distinfo->dist )
     ? $distinfo->dist
-    : $result->name;
+    : $data_hash->{name};
   return CPAN::Releases::Latest::Release->new(
     distname  => $distname,
     path      => $path,
-    timestamp => $result->stat->{mtime},
-    size      => $result->stat->{size},
+    timestamp => $data_hash->{stat}->{mtime},
+    size      => $data_hash->{stat}->{size},
   );
 }
 
