@@ -319,7 +319,7 @@ Though this benefit will only be observed in conjunction with low values of C<sc
 
    50 desc average 0.02579 /each   38.777 items/sec
   50 undef average 0.02547 /each   39.267 items/sec
-  
+
   100 desc average 0.02279 /each   43.873 items/sec
  100 undef average 0.02510 /each   39.846 items/sec
 

@@ -15,7 +15,21 @@ use Moo qw( has );
 use CPAN::DistnameInfo;
 use CPAN::Releases::Latest::Release;
 
+
+
+
+
+
+
 has 'result_set' => ( is => 'ro', required => 1 );
+
+
+
+
+
+
+
+
 
 sub next_release {
   my ($self) = @_;
@@ -54,6 +68,20 @@ CPAN::Distribution::ReleaseHistory::ReleaseIterator - A container to iterate a c
 =head1 VERSION
 
 version 0.001000
+
+=head1 METHODS
+
+=head2 C<next_release>
+
+Returns a L<< C<CPAN::Releases::Latest::Release>|CPAN::Releases::Latest::Release >>
+
+  my $item = $release_iterator->next_release();
+
+=head1 ATTRIBUTES
+
+=head2 C<result_set>
+
+A C<MetaCPAN::Client::ResultSet>  instance that dispatches C<MetaCPAN::Client::Result> objects.
 
 =head1 AUTHOR
 
