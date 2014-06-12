@@ -33,9 +33,11 @@ Returns a L<< C<CPAN::Releases::Latest::Release>|CPAN::Releases::Latest::Release
 
 sub next_release {
   my ($self) = @_;
-  my $result = $self->result_set->next;
+  my $scroll_result = $self->result_set->next;
+  return if not $scroll_result;
+  require MetaCPAN::Client::Release;
+  my $result = MetaCPAN::Client::Release->new_from_request( $scroll_result->{'_source'} || $scroll_result->{'fields'} );
   return if not $result;
-
   my $path = $result->download_url;
   $path =~ s{\A.*/authors/id/}{}msx;
   my $distinfo = CPAN::DistnameInfo->new($path);
