@@ -36,6 +36,10 @@ requires:
   strict: '0'
   utf8: '0'
   warnings: '0'
+resources:
+  bugtracker: https://github.com/kentfredric/CPAN-Distribution-ReleaseHistory/issues
+  homepage: https://github.com/kentfredric/CPAN-Distribution-ReleaseHistory
+  repository: https://github.com/kentfredric/CPAN-Distribution-ReleaseHistory.git
 version: '0.001000'
 x_BuiltWith:
   modules:

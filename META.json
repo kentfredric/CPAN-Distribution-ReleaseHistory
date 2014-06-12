@@ -120,6 +120,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/kentfredric/CPAN-Distribution-ReleaseHistory/issues"
+      },
+      "homepage" : "https://github.com/kentfredric/CPAN-Distribution-ReleaseHistory",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/kentfredric/CPAN-Distribution-ReleaseHistory.git",
+         "web" : "https://github.com/kentfredric/CPAN-Distribution-ReleaseHistory"
+      }
+   },
    "version" : "0.001000",
    "x_BuiltWith" : {
       "modules" : {
