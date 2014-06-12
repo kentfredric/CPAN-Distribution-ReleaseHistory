@@ -36,9 +36,7 @@ sub next_release {
   my $scroll_result = $self->result_set->next;
   return if not $scroll_result;
   require MetaCPAN::Client::Release;
-  my $result = MetaCPAN::Client::Release->new_from_request(
-    $scroll_result->{'_source'} || $scroll_result->{'fields'};
-  );
+  my $result = MetaCPAN::Client::Release->new_from_request( $scroll_result->{'_source'} || $scroll_result->{'fields'} );
   return if not $result;
   my $path = $result->download_url;
   $path =~ s{\A.*/authors/id/}{}msx;
