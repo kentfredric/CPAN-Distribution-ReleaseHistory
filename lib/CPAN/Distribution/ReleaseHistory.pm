@@ -48,6 +48,12 @@ use Moo 1.000008 qw( has );
 
 
 
+
+
+
+
+
+
 has 'ua' => (
   is        => 'ro',
   predicate => 'has_ua',
@@ -250,6 +256,10 @@ C<MetaCPAN> to resolve its information.
   }
 
 =head1 METHODS
+
+=head2 C<has_ua>
+
+Determine if user specified a custom C<UserAgent>
 
 =head2 C<release_iterator>
 

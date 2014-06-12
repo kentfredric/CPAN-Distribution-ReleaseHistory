@@ -33,6 +33,9 @@ SYNOPSIS
       }
 
 METHODS
+  "has_ua"
+    Determine if user specified a custom "UserAgent"
+
   "release_iterator"
     Perform the query and return a new
     "CPAN::Distribution::ReleaseHistory::ReleaseIterator" to walk over the

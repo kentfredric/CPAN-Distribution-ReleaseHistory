@@ -13,7 +13,7 @@ diag "set NO_NETWORK_TESTING to disable this test";
 0 and eval <<'DEBUGGING';
   use HTTP::Tiny;
   package HTTP::Tiny;
-    
+
   use Class::Method::Modifiers qw( around );
   use Data::Dump qw(pp);
   require JSON;
@@ -52,7 +52,7 @@ diag "set NO_NETWORK_TESTING to disable this test";
       my $rval = $orig->( $self, @args );
       pp( _decode_response($rval));
       return $rval;
-  };  
+  };
 DEBUGGING
 
 use CPAN::Distribution::ReleaseHistory;
