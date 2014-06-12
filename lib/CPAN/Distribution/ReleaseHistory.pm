@@ -133,7 +133,7 @@ has 'scroll_size' => (
 sub _iterator_from_scroll {
   my ( undef, $scroll ) = @_;
   require CPAN::Distribution::ReleaseHistory::ReleaseIterator;
-  return CPAN::Distribution::ReleaseHistory::ReleaseIterator->new( result_set => $scroll );
+  return CPAN::Distribution::ReleaseHistory::ReleaseIterator->new( scroller => $scroll );
 }
 
 sub release_iterator {
@@ -257,7 +257,7 @@ C<MetaCPAN> to resolve its information.
   # Returns a CPAN::Distribution::ReleaseHistory::ReleaseIterator
   my $iterator = $release_history->release_iterator();
 
-  # $release is an instance of CPAN::Releases::Latest::Release
+  # $release is an instance of CPAN::Distribution::ReleaseHistory::Release
   while ( my $release = $iterator->next_release() ) {
     print $release->distname();                   # Dist-Zilla
     print $release->path();                       # R/RJ/RJBS/Dist-Zilla-1.000.tar.gz
