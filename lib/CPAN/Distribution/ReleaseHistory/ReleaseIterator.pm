@@ -5,7 +5,7 @@ use utf8;
 
 package CPAN::Distribution::ReleaseHistory::ReleaseIterator;
 
-our $VERSION = '0.001000';
+our $VERSION = '0.002000';
 
 # ABSTRACT: A container to iterate a collection of releases for a single distribution
 
@@ -21,7 +21,7 @@ use CPAN::Distribution::ReleaseHistory::Release;
 
 
 
-has 'result_set' => ( is => 'ro', required => 1 );
+has 'scroller' => ( is => 'ro', required => 1 );
 
 
 
@@ -33,7 +33,7 @@ has 'result_set' => ( is => 'ro', required => 1 );
 
 sub next_release {
   my ($self) = @_;
-  my $scroll_result = $self->result_set->next;
+  my $scroll_result = $self->scroller->next;
   return if not $scroll_result;
 
   my $data_hash = $scroll_result->{'_source'} || $scroll_result->{'fields'};
@@ -70,21 +70,21 @@ CPAN::Distribution::ReleaseHistory::ReleaseIterator - A container to iterate a c
 
 =head1 VERSION
 
-version 0.001000
+version 0.002000
 
 =head1 METHODS
 
 =head2 C<next_release>
 
-Returns a L<< C<CPAN::Releases::Latest::Release>|CPAN::Releases::Latest::Release >>
+Returns a L<< C<CPAN::Distribution::ReleaseHistory::Release>|CPAN::Distribution::ReleaseHistory::Release >>
 
   my $item = $release_iterator->next_release();
 
 =head1 ATTRIBUTES
 
-=head2 C<result_set>
+=head2 C<scroller>
 
-A C<MetaCPAN::Client::ResultSet>  instance that dispatches C<MetaCPAN::Client::Result> objects.
+A C<Search::Elasticsearch::Scroll>  instance that dispatches results.
 
 =head1 AUTHOR
 

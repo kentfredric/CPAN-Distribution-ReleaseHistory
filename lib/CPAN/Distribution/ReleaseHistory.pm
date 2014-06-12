@@ -5,7 +5,7 @@ use utf8;
 
 package CPAN::Distribution::ReleaseHistory;
 
-our $VERSION = '0.001000';
+our $VERSION = '0.002000';
 
 # ABSTRACT: Show the release history of a single distribution
 
@@ -130,11 +130,15 @@ has 'scroll_size' => (
 
 
 
+sub _iterator_from_scroll {
+  my ( undef, $scroll ) = @_;
+  require CPAN::Distribution::ReleaseHistory::ReleaseIterator;
+  return CPAN::Distribution::ReleaseHistory::ReleaseIterator->new( scroller => $scroll );
+}
+
 sub release_iterator {
   my ($self) = @_;
-  require CPAN::Distribution::ReleaseHistory::ReleaseIterator;
-  return CPAN::Distribution::ReleaseHistory::ReleaseIterator->new(
-    result_set => $self->_mk_query_distribution( $self->distribution ) );
+  return $self->_iterator_from_scroll( $self->_mk_query_distribution );
 }
 
 
@@ -178,26 +182,45 @@ has 'es' => (
   },
 );
 
-sub _mk_query_distribution {
-  my ( $self, $distribution ) = @_;
+sub _mk_query {
+  my ($self) = @_;
+  return { term => { distribution => $self->distribution } };
+}
 
-  my $term = { term => { distribution => $distribution } };
-  my $body = { query => $term };
+sub _mk_body {
+  my ($self) = @_;
+  my $body = { query => $self->_mk_query };
+  if ( $self->sort ) {
+    $body->{sort} = { 'stat.mtime' => $self->sort };
+  }
+  return $body;
+}
+
+sub _mk_fields {
+  return [qw(name version date status maturity stat download_url )];
+}
+
+sub _mk_scroll_args {
+  my ($self) = @_;
   my %scrollargs = (
     scroll => '5m',
     index  => 'v0',
     type   => 'release',
     size   => $self->scroll_size,
-    body   => $body,
-    fields => [qw(name version date status maturity stat download_url )],
+    body   => $self->_mk_body,
+    fields => $self->_mk_fields,
   );
 
-  if ( $self->sort ) {
-    $body->{sort} = { 'stat.mtime' => $self->sort };
-  }
-  else {
+  if ( not $self->sort ) {
     $scrollargs{'search_type'} = 'scan';
   }
+  return \%scrollargs;
+}
+
+sub _mk_query_distribution {
+  my ($self) = @_;
+
+  my %scrollargs = %{ $self->_mk_scroll_args };
 
   require Search::Elasticsearch::Scroll;
 
@@ -220,7 +243,7 @@ CPAN::Distribution::ReleaseHistory - Show the release history of a single distri
 
 =head1 VERSION
 
-version 0.001000
+version 0.002000
 
 =head1 SYNOPSIS
 
@@ -240,7 +263,7 @@ C<MetaCPAN> to resolve its information.
   # Returns a CPAN::Distribution::ReleaseHistory::ReleaseIterator
   my $iterator = $release_history->release_iterator();
 
-  # $release is an instance of CPAN::Releases::Latest::Release
+  # $release is an instance of CPAN::Distribution::ReleaseHistory::Release
   while ( my $release = $iterator->next_release() ) {
     print $release->distname();                   # Dist-Zilla
     print $release->path();                       # R/RJ/RJBS/Dist-Zilla-1.000.tar.gz

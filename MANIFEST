@@ -12,6 +12,11 @@ README
 dist.ini
 dist.ini.meta
 examples/bench.pl
+examples/dist-days.pl
+examples/dist-hours.pl
+examples/dist-months.pl
+examples/dist-releases.pl
+examples/latest-dist-release.pl
 lib/CPAN/Distribution/ReleaseHistory.pm
 lib/CPAN/Distribution/ReleaseHistory/Release.pm
 lib/CPAN/Distribution/ReleaseHistory/ReleaseIterator.pm
@@ -34,6 +39,10 @@ maint-travis-ci/yamls/sterile.mkdn
 maint-travis-ci/yamls/sterile.yaml
 maint-travis-ci/yamls/sterile2.yaml
 maint/perlcritic.rc.gen.pl
+misc/Changes.deps
+misc/Changes.deps.all
+misc/Changes.deps.dev
+misc/Changes.deps.opt
 misc/perlcritic.deps
 perlcritic.rc
 t/00-compile/lib_CPAN_Distribution_ReleaseHistory_ReleaseIterator_pm.t
