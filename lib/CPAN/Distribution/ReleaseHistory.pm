@@ -138,7 +138,7 @@ sub _iterator_from_scroll {
 
 sub release_iterator {
   my ($self) = @_;
-  return $self->_iterator_from_scroll( $self->_mkquery_distribution );
+  return $self->_iterator_from_scroll( $self->_mk_query_distribution );
 }
 
 
@@ -182,9 +182,18 @@ has 'es' => (
   },
 );
 
+sub _mk_query {
+  my ($self) = @_;
+  return { term => { distribution => $self->distribution } };
+}
+
 sub _mk_body {
   my ($self) = @_;
-  return { query => { term => { distribution => $self->distribution } }, };
+  my $body = { query => $self->_mk_query };
+  if ( $self->sort ) {
+    $body->{sort} = { 'stat.mtime' => $self->sort };
+  }
+  return $body;
 }
 
 sub _mk_fields {
@@ -202,10 +211,7 @@ sub _mk_scroll_args {
     fields => $self->_mk_fields,
   );
 
-  if ( $self->sort ) {
-    $body->{sort} = { 'stat.mtime' => $self->sort };
-  }
-  else {
+  if ( not $self->sort ) {
     $scrollargs{'search_type'} = 'scan';
   }
   return \%scrollargs;

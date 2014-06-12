@@ -12,6 +12,11 @@ README
 dist.ini
 dist.ini.meta
 examples/bench.pl
+examples/dist-days.pl
+examples/dist-hours.pl
+examples/dist-months.pl
+examples/dist-releases.pl
+examples/latest-dist-release.pl
 lib/CPAN/Distribution/ReleaseHistory.pm
 lib/CPAN/Distribution/ReleaseHistory/Release.pm
 lib/CPAN/Distribution/ReleaseHistory/ReleaseIterator.pm

@@ -1,6 +1,6 @@
 Release history for CPAN-Distribution-ReleaseHistory
 
-0.002000 2014-06-12T18:40:38Z
+0.002000 2014-06-12T20:42:18Z
  [00 API Impacting changes]
  - Code refactored internally to allow better overriding in subclasses
  - ::ReleaseIterator now takes 'scroller' attribute instead.
