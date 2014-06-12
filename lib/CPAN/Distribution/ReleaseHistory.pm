@@ -131,7 +131,7 @@ has 'scroll_size' => (
 
 
 sub _iterator_from_scroll {
-  my ( $self, $scroll ) = @_;
+  my ( undef, $scroll ) = @_;
   require CPAN::Distribution::ReleaseHistory::ReleaseIterator;
   return CPAN::Distribution::ReleaseHistory::ReleaseIterator->new( result_set => $scroll );
 }
@@ -199,7 +199,7 @@ sub _mk_scroll_args {
     type   => 'release',
     size   => $self->scroll_size,
     body   => $self->_mk_body,
-    fields => $self->_mk_fields
+    fields => $self->_mk_fields,
   );
 
   if ( $self->sort ) {
