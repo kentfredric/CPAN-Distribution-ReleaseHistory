@@ -15,7 +15,21 @@ use Moo qw( has );
 use CPAN::DistnameInfo;
 use CPAN::Releases::Latest::Release;
 
+=attr C<result_set>
+
+A C<MetaCPAN::Client::ResultSet>  instance that dispatches C<MetaCPAN::Client::Result> objects.
+
+=cut
+
 has 'result_set' => ( is => 'ro', required => 1 );
+
+=method C<next_release>
+
+Returns a L<< C<CPAN::Releases::Latest::Release>|CPAN::Releases::Latest::Release >>
+
+  my $item = $release_iterator->next_release();
+
+=cut
 
 sub next_release {
   my ($self) = @_;
