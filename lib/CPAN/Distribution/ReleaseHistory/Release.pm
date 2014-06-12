@@ -27,6 +27,8 @@ use Moo qw( has );
 
 
 
+
+
 use CPAN::DistnameInfo;
 
 
@@ -98,7 +100,9 @@ version 0.001000
 
 =head1 SYNOPSIS
 
-This is mostly a work-a-like for L<< C<CPAN::Latest::ReleaseHistory::Release>|CPAN::Latest::ReleaseHistory::Release >>, except without the dependency on L<< C<MetaCPAN::Client>|MetaCPAN::Client >>
+This is mostly a work-a-like for 
+L<< C<CPAN::Latest::ReleaseHistory::Release>|CPAN::Latest::ReleaseHistory::Release >>, except without the dependency on
+L<< C<MetaCPAN::Client>|MetaCPAN::Client >>
 
   my $release = $releaseiterator->next_release;
 
