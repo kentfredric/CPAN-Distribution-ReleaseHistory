@@ -1,6 +1,4 @@
 #!/usr/bin/env perl
-# FILENAME: dist-releases.pl
-# CREATED: 06/13/14 06:46:31 by Kent Fredric (kentnl) <kentfredric@gmail.com>
 # ABSTRACT: Show the latest release of a given dist.
 
 use strict;

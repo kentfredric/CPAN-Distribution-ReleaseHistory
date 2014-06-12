@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# ABSTRACT: Show day-of-week distribution for a given dist
+# ABSTRACT: Show hour-of-day distribution for a given dist
 
 use strict;
 use warnings;
