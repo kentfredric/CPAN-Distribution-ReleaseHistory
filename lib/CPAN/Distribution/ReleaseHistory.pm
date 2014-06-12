@@ -198,6 +198,9 @@ sub _mk_query_distribution {
 
 
 
+
+
+
 sub release_iterator {
   my ($self) = @_;
   require CPAN::Distribution::ReleaseHistory::ReleaseIterator;
@@ -253,7 +256,9 @@ This is similar in concept to C<CPAN::ReleaseHistory>, except its tailored to us
 
 =head2 C<release_iterator>
 
-Perform the query and return a new L<< C<CPAN::Distribution::ReleaseHistory::ReleaseIterator>|CPAN::Distribution::ReleaseHistory::ReleaseIterator >> to walk over the results.
+Perform the query and return a new
+L<< C<CPAN::Distribution::ReleaseHistory::ReleaseIterator>|CPAN::Distribution::ReleaseHistory::ReleaseIterator >> to walk over
+the results.
 
   my $iterator = $object->release_iterator
 
