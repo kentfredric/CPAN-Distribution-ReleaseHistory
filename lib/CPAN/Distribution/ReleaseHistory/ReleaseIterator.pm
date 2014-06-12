@@ -15,13 +15,13 @@ use Moo qw( has );
 use CPAN::DistnameInfo;
 use CPAN::Distribution::ReleaseHistory::Release;
 
-=attr C<result_set>
+=attr C<scroller>
 
 A C<MetaCPAN::Client::ResultSet>  instance that dispatches C<MetaCPAN::Client::Result> objects.
 
 =cut
 
-has 'result_set' => ( is => 'ro', required => 1 );
+has 'scroller' => ( is => 'ro', required => 1 );
 
 =method C<next_release>
 
@@ -33,7 +33,7 @@ Returns a L<< C<CPAN::Releases::Latest::Release>|CPAN::Releases::Latest::Release
 
 sub next_release {
   my ($self) = @_;
-  my $scroll_result = $self->result_set->next;
+  my $scroll_result = $self->scroller->next;
   return if not $scroll_result;
 
   my $data_hash = $scroll_result->{'_source'} || $scroll_result->{'fields'};

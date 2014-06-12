@@ -133,7 +133,7 @@ the results.
 sub _iterator_from_scroll {
   my ( undef, $scroll ) = @_;
   require CPAN::Distribution::ReleaseHistory::ReleaseIterator;
-  return CPAN::Distribution::ReleaseHistory::ReleaseIterator->new( result_set => $scroll );
+  return CPAN::Distribution::ReleaseHistory::ReleaseIterator->new( scroller => $scroll );
 }
 
 sub release_iterator {
