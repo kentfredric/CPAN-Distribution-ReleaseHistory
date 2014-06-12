@@ -54,66 +54,6 @@ use Moo 1.000008 qw( has );
 
 
 
-has 'ua' => (
-  is        => 'ro',
-  predicate => 'has_ua',
-);
-
-
-
-
-
-
-
-has 'es' => (
-  is      => 'ro',
-  lazy    => 1,
-  builder => sub {
-    my ($self) = @_;
-    my %args = (
-      nodes            => 'api.metacpan.org',
-      cxn_pool         => 'Static::NoPing',
-      send_get_body_as => 'POST',
-    );
-    if ( $self->has_ua ) {
-      $args{handle} = $self->ua;
-    }
-    require Search::Elasticsearch;
-    return Search::Elasticsearch->new(%args);
-  },
-);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-has 'scroll_size' => (
-  is      => 'ro',
-  lazy    => 1,
-  builder => sub { 1000 },
-);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 has 'distribution' => (
   is       => 'ro',
@@ -160,6 +100,84 @@ has 'sort' => (
   builder => sub { 'desc' },
 );
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+has 'scroll_size' => (
+  is      => 'ro',
+  lazy    => 1,
+  builder => sub { 1000 },
+);
+
+
+
+
+
+
+
+
+
+
+
+
+sub release_iterator {
+  my ($self) = @_;
+  require CPAN::Distribution::ReleaseHistory::ReleaseIterator;
+  return CPAN::Distribution::ReleaseHistory::ReleaseIterator->new(
+    result_set => $self->_mk_query_distribution( $self->distribution ) );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+has 'ua' => (
+  is        => 'ro',
+  predicate => 'has_ua',
+);
+
+
+
+
+
+
+
+has 'es' => (
+  is      => 'ro',
+  lazy    => 1,
+  builder => sub {
+    my ($self) = @_;
+    my %args = (
+      nodes            => 'api.metacpan.org',
+      cxn_pool         => 'Static::NoPing',
+      send_get_body_as => 'POST',
+    );
+    if ( $self->has_ua ) {
+      $args{handle} = $self->ua;
+    }
+    require Search::Elasticsearch;
+    return Search::Elasticsearch->new(%args);
+  },
+);
+
 sub _mk_query_distribution {
   my ( $self, $distribution ) = @_;
 
@@ -190,24 +208,6 @@ sub _mk_query_distribution {
     scroller => $scroller,
     type     => 'release',
   );
-}
-
-
-
-
-
-
-
-
-
-
-
-
-sub release_iterator {
-  my ($self) = @_;
-  require CPAN::Distribution::ReleaseHistory::ReleaseIterator;
-  return CPAN::Distribution::ReleaseHistory::ReleaseIterator->new(
-    result_set => $self->_mk_query_distribution( $self->distribution ) );
 }
 
 no Moo;
@@ -257,10 +257,6 @@ C<MetaCPAN> to resolve its information.
 
 =head1 METHODS
 
-=head2 C<has_ua>
-
-Determine if user specified a custom C<UserAgent>
-
 =head2 C<release_iterator>
 
 Perform the query and return a new
@@ -269,26 +265,11 @@ the results.
 
   my $iterator = $object->release_iterator
 
+=head2 C<has_ua>
+
+Determine if user specified a custom C<UserAgent>
+
 =head1 ATTRIBUTES
-
-=head2 C<ua>
-
-A C<HTTP::Tiny> compatible user agent.
-
-=head2 C<es>
-
-A Search::Elasticsearch instance.
-
-=head2 C<scroll_size>
-
-Volume of results to fetch per request.
-
-  default: 1000
-
-Larger values give slower responses but faster total execution time.
-
-Smaller values give faster responses but slower total execution time. ( Due to paying ping time both ways per request in
-addition to other per-request overheads that are constant sized )
 
 =head2 C<distribution>
 
@@ -332,6 +313,25 @@ Though this benefit will only be observed in conjunction with low values of C<sc
 
   100 desc average 0.02279 /each   43.873 items/sec
  100 undef average 0.02510 /each   39.846 items/sec
+
+=head2 C<scroll_size>
+
+Volume of results to fetch per request.
+
+  default: 1000
+
+Larger values give slower responses but faster total execution time.
+
+Smaller values give faster responses but slower total execution time. ( Due to paying ping time both ways per request in
+addition to other per-request overheads that are constant sized )
+
+=head2 C<ua>
+
+A C<HTTP::Tiny> compatible user agent.
+
+=head2 C<es>
+
+A Search::Elasticsearch instance.
 
 =head1 AUTHOR
 
