@@ -13,63 +13,63 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use Moo qw( has );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+#pod =head1 SYNOPSIS
+#pod
+#pod This is mostly a workalike for L<< C<CPAN::Latest::ReleaseHistory::Release>|CPAN::Latest::ReleaseHistory::Release >>, except without the dependency on L<< C<MetaCPAN::Client>|MetaCPAN::Client >>
+#pod
+#pod   my $release = $releaseiterator->next_release;
+#pod
+#pod   print $release->distname();                   # Dist-Zilla
+#pod   print $release->path();                       # R/RJ/RJBS/Dist-Zilla-1.000.tar.gz
+#pod   print scalar gmtime $release->timestamp();    # Timestamp is Unixtime.
+#pod   print $release->size();                       # 30470 ( bytes )
+#pod   my $distinfo = $release->distinfo();          # CPAN::DistInfo object
+#pod
+#pod =cut
 
 use CPAN::DistnameInfo;
 
-
-
-
-
-
-
-
+#pod =attr C<distname>
+#pod
+#pod The name of the distribution.
+#pod
+#pod   e.g: Dist-Zilla
+#pod
+#pod =cut
 
 has 'distname' => ( is => 'ro' );
 
-
-
-
-
-
-
-
+#pod =attr C<path>
+#pod
+#pod The path to the distribution relative to a C<CPAN> mirror.
+#pod
+#pod   e.g: R/RJ/RJBS/Dist-Zilla-1.000.tar.gz
+#pod
+#pod =cut
 
 has 'path' => ( is => 'ro' );
 
-
-
-
-
-
+#pod =attr C<timestamp>
+#pod
+#pod The time of the release in C<unixtime>
+#pod
+#pod =cut
 
 has 'timestamp' => ( is => 'ro' );
 
-
-
-
-
-
+#pod =attr C<size>
+#pod
+#pod The size of the release in C<bytes>
+#pod
+#pod =cut
 
 has 'size' => ( is => 'ro' );
 
-
-
-
-
-
+#pod =attr C<distinfo>
+#pod
+#pod A L<< C<CPAN::DistnameInfo>|CPAN::DistnameInfo >> object for this release.
+#pod
+#pod =cut
 
 has 'distinfo' => ( is => 'lazy' );
 
