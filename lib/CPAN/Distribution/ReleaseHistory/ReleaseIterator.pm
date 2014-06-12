@@ -13,7 +13,7 @@ our $VERSION = '0.001000';
 
 use Moo qw( has );
 use CPAN::DistnameInfo;
-use CPAN::Releases::Latest::Release;
+use CPAN::Distribution::ReleaseHistory::Release;
 
 =attr C<result_set>
 
@@ -46,7 +46,7 @@ sub next_release {
     defined($distinfo) && defined( $distinfo->dist )
     ? $distinfo->dist
     : $data_hash->{name};
-  return CPAN::Releases::Latest::Release->new(
+  return CPAN::Distribution::ReleaseHistory::Release->new(
     distname  => $distname,
     path      => $path,
     timestamp => $data_hash->{stat}->{mtime},
