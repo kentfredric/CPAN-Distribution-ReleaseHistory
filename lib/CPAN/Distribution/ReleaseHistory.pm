@@ -130,11 +130,15 @@ the results.
 
 =cut
 
+sub _iterator_from_scroll {
+  my ( undef, $scroll ) = @_;
+  require CPAN::Distribution::ReleaseHistory::ReleaseIterator;
+  return CPAN::Distribution::ReleaseHistory::ReleaseIterator->new( result_set => $scroll );
+}
+
 sub release_iterator {
   my ($self) = @_;
-  require CPAN::Distribution::ReleaseHistory::ReleaseIterator;
-  return CPAN::Distribution::ReleaseHistory::ReleaseIterator->new(
-    result_set => $self->_mk_query_distribution( $self->distribution ) );
+  return $self->_iterator_from_scroll( $self->_mk_query_distribution );
 }
 
 =attr C<ua>
@@ -178,26 +182,45 @@ has 'es' => (
   },
 );
 
-sub _mk_query_distribution {
-  my ( $self, $distribution ) = @_;
+sub _mk_query {
+  my ($self) = @_;
+  return { term => { distribution => $self->distribution } };
+}
 
-  my $term = { term => { distribution => $distribution } };
-  my $body = { query => $term };
+sub _mk_body {
+  my ($self) = @_;
+  my $body = { query => $self->_mk_query };
+  if ( $self->sort ) {
+    $body->{sort} = { 'stat.mtime' => $self->sort };
+  }
+  return $body;
+}
+
+sub _mk_fields {
+  return [qw(name version date status maturity stat download_url )];
+}
+
+sub _mk_scroll_args {
+  my ($self) = @_;
   my %scrollargs = (
     scroll => '5m',
     index  => 'v0',
     type   => 'release',
     size   => $self->scroll_size,
-    body   => $body,
-    fields => [qw(name version date status maturity stat download_url )],
+    body   => $self->_mk_body,
+    fields => $self->_mk_fields,
   );
 
-  if ( $self->sort ) {
-    $body->{sort} = { 'stat.mtime' => $self->sort };
-  }
-  else {
+  if ( not $self->sort ) {
     $scrollargs{'search_type'} = 'scan';
   }
+  return \%scrollargs;
+}
+
+sub _mk_query_distribution {
+  my ($self) = @_;
+
+  my %scrollargs = %{ $self->_mk_scroll_args };
 
   require Search::Elasticsearch::Scroll;
 
