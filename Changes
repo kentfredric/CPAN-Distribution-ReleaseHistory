@@ -8,6 +8,13 @@ Release history for CPAN-Distribution-ReleaseHistory
  [Documentation]
  - misc spurious references to CPAN::Latest and MetaCPAN::Client removed.
 
+ [Examples]
+ - new examples/dist-days.pl
+ - new examples/dist-hours.pl
+ - new examples/dist-months.pl
+ - new examples/dist-releases.pl
+ - new examples/latest-dist-release.pl
+
 0.001000 2014-06-12T16:01:13Z
  - First version.
 
