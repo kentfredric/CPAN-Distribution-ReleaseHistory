@@ -5,7 +5,7 @@ use utf8;
 
 package CPAN::Distribution::ReleaseHistory::ReleaseIterator;
 
-our $VERSION = '0.001001';
+our $VERSION = '0.002001';
 
 # ABSTRACT: A container to iterate a collection of releases for a single distribution
 

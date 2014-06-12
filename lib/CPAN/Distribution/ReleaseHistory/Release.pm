@@ -5,7 +5,7 @@ use utf8;
 
 package CPAN::Distribution::ReleaseHistory::Release;
 
-our $VERSION = '0.001001';
+our $VERSION = '0.002001';
 
 # ABSTRACT: A container for release data
 
