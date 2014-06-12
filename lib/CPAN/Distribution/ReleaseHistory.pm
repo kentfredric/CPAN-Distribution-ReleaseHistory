@@ -5,7 +5,7 @@ use utf8;
 
 package CPAN::Distribution::ReleaseHistory;
 
-our $VERSION = '0.001001';
+our $VERSION = '0.002000';
 
 # ABSTRACT: Show the release history of a single distribution
 
@@ -237,7 +237,7 @@ CPAN::Distribution::ReleaseHistory - Show the release history of a single distri
 
 =head1 VERSION
 
-version 0.001001
+version 0.002000
 
 =head1 SYNOPSIS
 
