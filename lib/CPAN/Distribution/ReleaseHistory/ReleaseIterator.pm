@@ -17,7 +17,7 @@ use CPAN::Distribution::ReleaseHistory::Release;
 
 =attr C<scroller>
 
-A C<MetaCPAN::Client::ResultSet>  instance that dispatches C<MetaCPAN::Client::Result> objects.
+A C<Search::Elasticsearch::Scroll>  instance that dispatches results.
 
 =cut
 
