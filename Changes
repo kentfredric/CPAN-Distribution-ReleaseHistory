@@ -1,5 +1,7 @@
 Release history for CPAN-Distribution-ReleaseHistory
 
+0.002001 2014-08-16T07:13:32Z
+
 0.002000 2014-06-12T20:47:43Z
  [00 API Impacting changes]
  - Code refactored internally to allow better overriding in subclasses
