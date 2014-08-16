@@ -3,7 +3,7 @@ NAME
     single distribution
 
 VERSION
-    version 0.002000
+    version 0.002001
 
 SYNOPSIS
     This is similar in concept to "CPAN::ReleaseHistory", except its
