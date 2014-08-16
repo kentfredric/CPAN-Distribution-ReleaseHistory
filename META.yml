@@ -18,13 +18,13 @@ name: CPAN-Distribution-ReleaseHistory
 provides:
   CPAN::Distribution::ReleaseHistory:
     file: lib/CPAN/Distribution/ReleaseHistory.pm
-    version: '0.002001'
+    version: '0.002002'
   CPAN::Distribution::ReleaseHistory::Release:
     file: lib/CPAN/Distribution/ReleaseHistory/Release.pm
-    version: '0.002001'
+    version: '0.002002'
   CPAN::Distribution::ReleaseHistory::ReleaseIterator:
     file: lib/CPAN/Distribution/ReleaseHistory/ReleaseIterator.pm
-    version: '0.002001'
+    version: '0.002002'
 requires:
   CPAN::DistnameInfo: '0'
   Moo: '1.000008'
@@ -38,7 +38,7 @@ resources:
   bugtracker: https://github.com/kentnl/CPAN-Distribution-ReleaseHistory/issues
   homepage: https://github.com/kentnl/CPAN-Distribution-ReleaseHistory
   repository: https://github.com/kentnl/CPAN-Distribution-ReleaseHistory.git
-version: '0.002001'
+version: '0.002002'
 x_BuiltWith:
   modules:
     CPAN::DistnameInfo: '0.12'
@@ -435,7 +435,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: '0'
-          tag: 0.002001-source
+          tag: 0.002002-source
           tag_format: '%v-source'
           tag_message: v%v
           time_zone: local
@@ -489,7 +489,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: releases
           signed: '0'
-          tag: '0.002001'
+          tag: '0.002002'
           tag_format: '%v'
           tag_message: v%v
           time_zone: local
