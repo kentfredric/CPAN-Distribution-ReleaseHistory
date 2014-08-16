@@ -13,35 +13,6 @@ our $VERSION = '0.002001';
 
 use Moo 1.000008 qw( has );
 
-=head1 SYNOPSIS
-
-This is similar in concept to C<CPAN::ReleaseHistory>, except its tailored to use a single distribution name, and uses
-C<MetaCPAN> to resolve its information.
-
-  use CPAN::Distribution::ReleaseHistory;
-
-  my $release_history = CPAN::Distribution::ReleaseHistory->new(
-    distribution => 'Dist-Zilla',
-    # ua          => a HTTP::Tiny instance to use for requests
-    # es          => a Search::Elasticsearch instance
-    # scroll_size => 1000  : How many results to fetch per HTTP request
-    # sort        => 'desc': Direction of sort ( vs 'asc' and undef )
-  );
-
-  # Returns a CPAN::Distribution::ReleaseHistory::ReleaseIterator
-  my $iterator = $release_history->release_iterator();
-
-  # $release is an instance of CPAN::Distribution::ReleaseHistory::Release
-  while ( my $release = $iterator->next_release() ) {
-    print $release->distname();                   # Dist-Zilla
-    print $release->path();                       # R/RJ/RJBS/Dist-Zilla-1.000.tar.gz
-    print scalar gmtime $release->timestamp();    # Timestamp is Unixtime.
-    print $release->size();                       # 30470 ( bytes )
-    my $distinfo = $release->distinfo();          # CPAN::DistInfo object
-  }
-
-=cut
-
 =attr C<distribution>
 
 A string exactly matching a name of a C<CPAN> distribution.
@@ -230,3 +201,32 @@ sub _mk_query_distribution {
 no Moo;
 
 1;
+
+=head1 SYNOPSIS
+
+This is similar in concept to C<CPAN::ReleaseHistory>, except its tailored to use a single distribution name, and uses
+C<MetaCPAN> to resolve its information.
+
+  use CPAN::Distribution::ReleaseHistory;
+
+  my $release_history = CPAN::Distribution::ReleaseHistory->new(
+    distribution => 'Dist-Zilla',
+    # ua          => a HTTP::Tiny instance to use for requests
+    # es          => a Search::Elasticsearch instance
+    # scroll_size => 1000  : How many results to fetch per HTTP request
+    # sort        => 'desc': Direction of sort ( vs 'asc' and undef )
+  );
+
+  # Returns a CPAN::Distribution::ReleaseHistory::ReleaseIterator
+  my $iterator = $release_history->release_iterator();
+
+  # $release is an instance of CPAN::Distribution::ReleaseHistory::Release
+  while ( my $release = $iterator->next_release() ) {
+    print $release->distname();                   # Dist-Zilla
+    print $release->path();                       # R/RJ/RJBS/Dist-Zilla-1.000.tar.gz
+    print scalar gmtime $release->timestamp();    # Timestamp is Unixtime.
+    print $release->size();                       # 30470 ( bytes )
+    my $distinfo = $release->distinfo();          # CPAN::DistInfo object
+  }
+
+=cut

@@ -6,6 +6,7 @@ Release history for CPAN-Distribution-ReleaseHistory
  - no code changes.
  - tests updated
  - metadata updated.
+ - whitespace reduced.
 
  [Dependencies::Stats]
  - Dependencies changed since 0.002000, see misc/*.deps* for details
@@ -15,6 +16,9 @@ Release history for CPAN-Distribution-ReleaseHistory
 
  [Metadata]
  - migrated to kentnl org.
+
+ [Misc]
+ - Improve source side POD to reduce build side whitespace.
 
  [Tests]
  - Update Test::ReportPrereqs

@@ -57,4 +57,3 @@ sub next_release {
 no Moo;
 
 1;
-
