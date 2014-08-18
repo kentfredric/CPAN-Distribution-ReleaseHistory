@@ -44,6 +44,7 @@ x_BuiltWith:
     CPAN::DistnameInfo: '0.12'
     CPAN::Meta: '2.142060'
     Dist::Zilla::App::Command::bakeini: '0.001002'
+    Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes: '0.002001'
     Dist::Zilla::Plugin::Authority: '1.006'
     Dist::Zilla::Plugin::AutoPrereqs: '5.020'
     Dist::Zilla::Plugin::BumpVersionAfterRelease: '0.002'
@@ -71,7 +72,7 @@ x_BuiltWith:
     Dist::Zilla::Plugin::MinimumPerl: '1.003'
     Dist::Zilla::Plugin::PodCoverageTests: '5.020'
     Dist::Zilla::Plugin::PodSyntaxTests: '5.020'
-    Dist::Zilla::Plugin::PodWeaver: '4.005'
+    Dist::Zilla::Plugin::PodWeaver: '4.006'
     Dist::Zilla::Plugin::Prereqs: '5.020'
     Dist::Zilla::Plugin::Prereqs::Recommend::MatchInstalled: '0.002001'
     Dist::Zilla::Plugin::ReadmeAnyFromPod: '0.142250'
@@ -87,10 +88,10 @@ x_BuiltWith:
     Dist::Zilla::Plugin::TestRelease: '5.020'
     Dist::Zilla::Plugin::Twitter: '0.025'
     Dist::Zilla::Plugin::UploadToCPAN: '5.020'
-    Dist::Zilla::PluginBundle::Author::KENTNL: '2.017002'
+    Dist::Zilla::PluginBundle::Author::KENTNL: '2.018000'
     ExtUtils::MakeMaker: '6.98'
     File::Spec: '3.48'
-    Moo: '1.005000'
+    Moo: '1.006000'
     Pod::Coverage::TrustPod: '0.100003'
     Search::Elasticsearch: '1.14'
     Search::Elasticsearch::Scroll: '1.14'
@@ -342,7 +343,7 @@ x_Dist_Zilla:
               name: Legal
               version: '4.006'
       name: '@Author::KENTNL/PodWeaver'
-      version: '4.005'
+      version: '4.006'
     -
       class: Dist::Zilla::Plugin::AutoPrereqs
       name: '@Author::KENTNL/AutoPrereqs'
@@ -370,6 +371,10 @@ x_Dist_Zilla:
           default_jobs: '10'
       name: '@Author::KENTNL/MakeMaker'
       version: '5.020'
+    -
+      class: Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes
+      name: '@Author::KENTNL/Author::KENTNL::RecommendFixes'
+      version: '0.002001'
     -
       class: Dist::Zilla::Plugin::ReadmeFromPod
       name: '@Author::KENTNL/ReadmeFromPod'
