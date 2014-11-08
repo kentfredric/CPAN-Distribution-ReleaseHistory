@@ -16,6 +16,7 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  - Test::More
 
  [Added / test requires]
+ - Test::RequiresInternet
  - perl 5.008
 
  [Changed / configure recommends]

@@ -5,6 +5,7 @@ This file contains changes in REQUIRED dependencies for standard CPAN phases (co
  - perl 5.008
 
  [Added / test requires]
+ - Test::RequiresInternet
  - perl 5.008
 
 0.002001 2014-08-16T07:19:26Z
