@@ -1,6 +1,6 @@
 Release history for CPAN-Distribution-ReleaseHistory
 
-0.002002 2014-11-08T02:47:11Z aeb90d1
+0.002002 2014-11-08T02:50:41Z cc1bbb8
  [Dependencies::Stats]
  - Dependencies changed since 0.002001, see misc/*.deps* for details
  - configure: +1 (recommends: ↑1)
@@ -9,6 +9,9 @@ Release history for CPAN-Distribution-ReleaseHistory
 
  [Metadata]
  - author = kentnl
+
+ [Tests]
+ - Use Test::RequiresInternet to shore up test failures.
 
 0.002001 2014-08-16T07:19:26Z
  [00 Trivial]
