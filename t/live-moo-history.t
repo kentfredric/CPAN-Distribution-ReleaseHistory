@@ -2,11 +2,7 @@ use strict;
 use warnings;
 
 use Test::More;
-
-plan skip_all => 'NO_NETWORK_TESTING set. Skipping network dependent tests'
-  if $ENV{NO_NETWORK_TESTING};
-
-diag "set NO_NETWORK_TESTING to disable this test";
+use Test::RequiresInternet ( 'api.metacpan.org' => 80 );
 
 # ABSTRACT: Show live Moo history
 

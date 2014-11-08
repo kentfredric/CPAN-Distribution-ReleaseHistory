@@ -1,11 +1,10 @@
-use 5.008;    # utf8
+use 5.006;
 use strict;
 use warnings;
-use utf8;
 
 package CPAN::Distribution::ReleaseHistory::ReleaseIterator;
 
-our $VERSION = '0.002001';
+our $VERSION = '0.002002';
 
 # ABSTRACT: A container to iterate a collection of releases for a single distribution
 
@@ -70,7 +69,7 @@ CPAN::Distribution::ReleaseHistory::ReleaseIterator - A container to iterate a c
 
 =head1 VERSION
 
-version 0.002001
+version 0.002002
 
 =head1 METHODS
 
@@ -88,7 +87,7 @@ A C<Search::Elasticsearch::Scroll>  instance that dispatches results.
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

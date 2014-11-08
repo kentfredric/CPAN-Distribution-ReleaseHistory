@@ -1,11 +1,10 @@
-use 5.008;    # utf8
+use 5.006;
 use strict;
 use warnings;
-use utf8;
 
 package CPAN::Distribution::ReleaseHistory::Release;
 
-our $VERSION = '0.002001';
+our $VERSION = '0.002002';
 
 # ABSTRACT: A container for release data
 
@@ -80,7 +79,7 @@ CPAN::Distribution::ReleaseHistory::Release - A container for release data
 
 =head1 VERSION
 
-version 0.002001
+version 0.002002
 
 =head1 SYNOPSIS
 
@@ -124,7 +123,7 @@ A L<< C<CPAN::DistnameInfo>|CPAN::DistnameInfo >> object for this release.
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
