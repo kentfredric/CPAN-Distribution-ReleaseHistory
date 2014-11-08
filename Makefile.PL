@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use 5.008;
+use 5.006;
 
 use ExtUtils::MakeMaker;
 
@@ -18,7 +18,7 @@ my %WriteMakefileArgs = (
   "DISTNAME" => "CPAN-Distribution-ReleaseHistory",
   "EXE_FILES" => [],
   "LICENSE" => "perl",
-  "MIN_PERL_VERSION" => "5.008",
+  "MIN_PERL_VERSION" => "5.006",
   "NAME" => "CPAN::Distribution::ReleaseHistory",
   "PREREQ_PM" => {
     "CPAN::DistnameInfo" => 0,
@@ -26,7 +26,6 @@ my %WriteMakefileArgs = (
     "Search::Elasticsearch" => 0,
     "Search::Elasticsearch::Scroll" => 0,
     "strict" => 0,
-    "utf8" => 0,
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
@@ -52,7 +51,6 @@ my %FallbackPrereqs = (
   "Test::More" => "0.89",
   "Test::RequiresInternet" => 0,
   "strict" => 0,
-  "utf8" => 0,
   "warnings" => 0
 );
 
