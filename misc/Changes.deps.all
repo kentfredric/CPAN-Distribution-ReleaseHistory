@@ -1,7 +1,6 @@
 This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL dependencies for all phases (configure/build/runtime/test/develop)
 
 0.002002
-<<<<<<< Updated upstream
  [Added / configure requires]
  - perl 5.008
 
@@ -17,6 +16,7 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  - Test::More
 
  [Added / test requires]
+ - Test::RequiresInternet
  - perl 5.008
 
  [Changed / configure recommends]
@@ -35,13 +35,6 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
 
  [Removed / develop requires]
  - Dist::Zilla::Plugin::EOLTests
-=======
- [Added / develop requires]
- - Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes 0.001001
-
- [Changed / develop suggests]
- - Dist::Zilla::PluginBundle::Author::KENTNL 2.017002 → 2.020000
->>>>>>> Stashed changes
 
 0.002001 2014-08-16T07:19:26Z
  [Added / develop requires]

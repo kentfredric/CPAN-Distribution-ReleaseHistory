@@ -1,7 +1,6 @@
 This file contains changes to DEVELOPMENT dependencies only ( both REQUIRED and OPTIONAL )
 
 0.002002
-<<<<<<< Updated upstream
  [Added / develop recommends]
  - Test::More 1.001009
 
@@ -22,13 +21,6 @@ This file contains changes to DEVELOPMENT dependencies only ( both REQUIRED and 
 
  [Removed / develop requires]
  - Dist::Zilla::Plugin::EOLTests
-=======
- [Added / develop requires]
- - Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes 0.001001
-
- [Changed / develop suggests]
- - Dist::Zilla::PluginBundle::Author::KENTNL 2.017002 → 2.020000
->>>>>>> Stashed changes
 
 0.002001 2014-08-16T07:19:26Z
  [Added / develop requires]
