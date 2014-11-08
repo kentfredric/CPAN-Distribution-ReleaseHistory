@@ -1,6 +1,8 @@
 Release history for CPAN-Distribution-ReleaseHistory
 
 {{$NEXT}}
+
+0.002002 2014-11-08T02:54:43Z 0c2c049
  [Dependencies::Stats]
  - Dependencies changed since 0.002001, see misc/*.deps* for details
  - configure: +1 (recommends: ↑1)
