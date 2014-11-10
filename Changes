@@ -1,6 +1,14 @@
 Release history for CPAN-Distribution-ReleaseHistory
 
 {{$NEXT}}
+ [Dependencies::Stats]
+ - Dependencies changed since 0.002002, see misc/*.deps* for details
+ - configure: (recommends: ↑1)
+ - develop: (suggests: ↑1)
+ - test: +1 (recommends: ↑1)
+
+ [Tests]
+ - Further improve tests to spew things when they fail, esp: Avoid crappy subtests that give no context.
 
 0.002002 2014-11-08T02:54:43Z 0c2c049
  [Dependencies::Stats]
