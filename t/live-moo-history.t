@@ -55,8 +55,9 @@ DEBUGGING
 use CPAN::Distribution::ReleaseHistory;
 
 my $rh;
+my $e;
 is(
-  exception {
+  $e = exception {
     $rh = CPAN::Distribution::ReleaseHistory->new(
       distribution => "Moo",
       sort         => 'asc',
@@ -64,7 +65,7 @@ is(
   },
   undef,
   "Created Instance OK"
-);
+) or diag explain $e;
 
 my $ri;
 
@@ -74,19 +75,19 @@ is(
   },
   undef,
   "Created release iterator OK"
-);
+) or diag explain $e;
 
 my $i = 0;
 
 sub get_release {
   my $release;
   is(
-    exception {
+    $e = exception {
       $release = $ri->next_release;
     },
     undef,
     "Get release $i OK"
-  );
+  ) or diag explain $e;
   return $release;
 }
 
