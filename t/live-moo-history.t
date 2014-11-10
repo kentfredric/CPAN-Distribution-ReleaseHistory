@@ -3,6 +3,7 @@ use warnings;
 
 use Test::More;
 use Test::RequiresInternet ( 'api.metacpan.org' => 80 );
+use Test::Fatal qw( exception );
 
 # ABSTRACT: Show live Moo history
 
@@ -53,23 +54,53 @@ DEBUGGING
 
 use CPAN::Distribution::ReleaseHistory;
 
-my $rh = CPAN::Distribution::ReleaseHistory->new(
-  distribution => "Moo",
-  sort         => 'asc',
+my $rh;
+is(
+  exception {
+    $rh = CPAN::Distribution::ReleaseHistory->new(
+      distribution => "Moo",
+      sort         => 'asc',
+    );
+  },
+  undef,
+  "Created Instance OK"
 );
 
-my $ri = $rh->release_iterator;
+my $ri;
+
+is(
+  exception {
+    $ri = $rh->release_iterator;
+  },
+  undef,
+  "Created release iterator OK"
+);
 
 my $i = 0;
-while ( my $r = $ri->next_release ) {
+
+sub get_release {
+  my $release;
+  is(
+    exception {
+      $release = $ri->next_release;
+    },
+    undef,
+    "Get release $i OK"
+  );
+  return $release;
+}
+
+while ( my $r = get_release() ) {
   last if $i > 11;
   $i++;
-  subtest "$i-th release: " . $r->distinfo->version => sub {
-    cmp_ok( $r->timestamp, '<=', 1321316878, "Prior to Tue Nov 15 00:27:58 2011" );
-    is( $r->distinfo->cpanid, 'MSTROUT', "Was released by MST" );
-    cmp_ok( $r->distinfo->version, '>=', 0.009000, "V >= 0.009000" );
-    cmp_ok( $r->distinfo->version, '<=', 0.009012, "V <= 0.009012" );
-  };
+  my $rel = "$i-th @" . $r->distinfo->version;
+  ## NB: This shit is here because the
+  note "BEGIN: $rel";
+  cmp_ok( $r->timestamp, '<=', 1321316878, "$rel: Prior to Tue Nov 15 00:27:58 2011" );
+  is( $r->distinfo->cpanid, 'MSTROUT', "$rel Was released by MST" );
+  cmp_ok( $r->distinfo->version, '>=', 0.009000, "$rel V >= 0.009000" );
+  cmp_ok( $r->distinfo->version, '<=', 0.009012, "$rel V <= 0.009012" );
+  note "END: $rel";
 }
 
 done_testing;

@@ -1,7 +1,7 @@
 do { my $x = {
        'configure' => {
                         'recommends' => {
-                                          'ExtUtils::MakeMaker' => '7.00'
+                                          'ExtUtils::MakeMaker' => '7.02'
                                         },
                         'requires' => {
                                         'ExtUtils::MakeMaker' => '0',
@@ -69,7 +69,7 @@ do { my $x = {
                                       'Test::Pod::Coverage' => '1.08'
                                     },
                       'suggests' => {
-                                      'Dist::Zilla::App::Command::bakeini' => '0.001004',
+                                      'Dist::Zilla::App::Command::bakeini' => '0.002000',
                                       'Dist::Zilla::PluginBundle::Author::KENTNL' => '2.022000'
                                     }
                     },
@@ -87,12 +87,13 @@ do { my $x = {
        'test' => {
                    'recommends' => {
                                      'CPAN::Meta' => '2.120900',
-                                     'ExtUtils::MakeMaker' => '7.00',
+                                     'ExtUtils::MakeMaker' => '7.02',
                                      'Test::More' => '1.001009'
                                    },
                    'requires' => {
                                    'ExtUtils::MakeMaker' => '0',
                                    'File::Spec' => '0',
+                                   'Test::Fatal' => '0',
                                    'Test::More' => '0.89',
                                    'Test::RequiresInternet' => '0',
                                    'perl' => '5.006'

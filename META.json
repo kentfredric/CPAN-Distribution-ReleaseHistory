@@ -16,7 +16,7 @@
    "prereqs" : {
       "configure" : {
          "recommends" : {
-            "ExtUtils::MakeMaker" : "7.00"
+            "ExtUtils::MakeMaker" : "7.02"
          },
          "requires" : {
             "ExtUtils::MakeMaker" : "0",
@@ -84,7 +84,7 @@
             "Test::Pod::Coverage" : "1.08"
          },
          "suggests" : {
-            "Dist::Zilla::App::Command::bakeini" : "0.001004",
+            "Dist::Zilla::App::Command::bakeini" : "0.002000",
             "Dist::Zilla::PluginBundle::Author::KENTNL" : "2.022000"
          }
       },
@@ -102,12 +102,13 @@
       "test" : {
          "recommends" : {
             "CPAN::Meta" : "2.120900",
-            "ExtUtils::MakeMaker" : "7.00",
+            "ExtUtils::MakeMaker" : "7.02",
             "Test::More" : "1.001009"
          },
          "requires" : {
             "ExtUtils::MakeMaker" : "0",
             "File::Spec" : "0",
+            "Test::Fatal" : "0",
             "Test::More" : "0.89",
             "Test::RequiresInternet" : "0",
             "perl" : "5.006"
@@ -146,7 +147,7 @@
          "CPAN::DistnameInfo" : "0.12",
          "CPAN::Meta" : "2.142690",
          "Dist::Zilla" : "5.024",
-         "Dist::Zilla::App::Command::bakeini" : "0.001004",
+         "Dist::Zilla::App::Command::bakeini" : "0.002000",
          "Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes" : "0.004000",
          "Dist::Zilla::Plugin::Authority" : "1.009",
          "Dist::Zilla::Plugin::AutoPrereqs" : "5.024",
@@ -193,7 +194,7 @@
          "Dist::Zilla::Plugin::Twitter" : "0.026",
          "Dist::Zilla::Plugin::UploadToCPAN" : "5.024",
          "Dist::Zilla::PluginBundle::Author::KENTNL" : "2.022000",
-         "ExtUtils::MakeMaker" : "7.00",
+         "ExtUtils::MakeMaker" : "7.02",
          "File::Spec" : "3.49",
          "Moo" : "1.006001",
          "Pod::Coverage::TrustPod" : "0.100003",
@@ -202,6 +203,7 @@
          "Test::CPAN::Changes" : "0.30",
          "Test::CPAN::Meta" : "0.23",
          "Test::EOL" : "1.5",
+         "Test::Fatal" : "0.013",
          "Test::Kwalitee" : "1.22",
          "Test::More" : "1.001009",
          "Test::Pod" : "1.48",
