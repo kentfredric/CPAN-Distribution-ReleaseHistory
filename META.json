@@ -118,15 +118,15 @@
    "provides" : {
       "CPAN::Distribution::ReleaseHistory" : {
          "file" : "lib/CPAN/Distribution/ReleaseHistory.pm",
-         "version" : "0.002003"
+         "version" : "0.002004"
       },
       "CPAN::Distribution::ReleaseHistory::Release" : {
          "file" : "lib/CPAN/Distribution/ReleaseHistory/Release.pm",
-         "version" : "0.002003"
+         "version" : "0.002004"
       },
       "CPAN::Distribution::ReleaseHistory::ReleaseIterator" : {
          "file" : "lib/CPAN/Distribution/ReleaseHistory/ReleaseIterator.pm",
-         "version" : "0.002003"
+         "version" : "0.002004"
       }
    },
    "release_status" : "stable",
@@ -141,7 +141,7 @@
          "web" : "https://github.com/kentnl/CPAN-Distribution-ReleaseHistory"
       }
    },
-   "version" : "0.002003",
+   "version" : "0.002004",
    "x_BuiltWith" : {
       "modules" : {
          "CPAN::DistnameInfo" : "0.12",
@@ -676,7 +676,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "0.002003-source",
+                  "tag" : "0.002004-source",
                   "tag_format" : "%v-source",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
@@ -747,7 +747,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : "releases",
                   "signed" : 0,
-                  "tag" : "0.002003",
+                  "tag" : "0.002004",
                   "tag_format" : "%v",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
