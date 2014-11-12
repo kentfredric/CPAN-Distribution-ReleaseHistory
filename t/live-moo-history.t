@@ -95,7 +95,8 @@ while ( my $r = get_release() ) {
   last if $i > 11;
   $i++;
   my $rel = "$i-th @" . $r->distinfo->version;
-  ## NB: This shit is here because the
+  # NB: This shit is here because the subtests are broken for some reason and
+  # Give useless context.
   note "BEGIN: $rel";
   cmp_ok( $r->timestamp, '<=', 1321316878, "$rel: Prior to Tue Nov 15 00:27:58 2011" );
   is( $r->distinfo->cpanid, 'MSTROUT', "$rel Was released by MST" );
