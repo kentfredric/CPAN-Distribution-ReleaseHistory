@@ -4,7 +4,7 @@ CPAN::Distribution::ReleaseHistory - Show the release history of a single distri
 
 # VERSION
 
-version 0.002003
+version 0.002004
 
 # SYNOPSIS
 
