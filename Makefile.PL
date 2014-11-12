@@ -31,10 +31,11 @@ my %WriteMakefileArgs = (
   "TEST_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0,
     "File::Spec" => 0,
+    "Test::Fatal" => 0,
     "Test::More" => "0.89",
     "Test::RequiresInternet" => 0
   },
-  "VERSION" => "0.002002",
+  "VERSION" => "0.002003",
   "test" => {
     "TESTS" => "t/*.t t/00-compile/*.t"
   }
@@ -48,6 +49,7 @@ my %FallbackPrereqs = (
   "Moo" => "1.000008",
   "Search::Elasticsearch" => 0,
   "Search::Elasticsearch::Scroll" => 0,
+  "Test::Fatal" => 0,
   "Test::More" => "0.89",
   "Test::RequiresInternet" => 0,
   "strict" => 0,
