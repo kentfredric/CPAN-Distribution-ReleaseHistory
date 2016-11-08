@@ -33,7 +33,6 @@ requires:
   CPAN::DistnameInfo: '0'
   Moo: '1.000008'
   Search::Elasticsearch: '0'
-  Search::Elasticsearch::Scroll: '0'
   perl: '5.006'
   strict: '0'
   warnings: '0'
