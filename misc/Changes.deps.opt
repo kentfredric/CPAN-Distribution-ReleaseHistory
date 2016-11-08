@@ -2,11 +2,11 @@ This file contains changes in OPTIONAL dependencies for standard CPAN phases (co
 
 0.002004
  [Changed / configure recommends]
- - ExtUtils::MakeMaker 7.02 → 7.24
+ - ExtUtils::MakeMaker 7.02 → 7.00
 
  [Changed / test recommends]
- - ExtUtils::MakeMaker 7.02 → 7.24
- - Test::More 1.001009 → 1.302059
+ - ExtUtils::MakeMaker 7.02 → 7.00
+ - Test::More 1.001009 → 0.99
 
 0.002003 2014-11-12T16:48:51Z
  [Changed / configure recommends]
