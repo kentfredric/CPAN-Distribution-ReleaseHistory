@@ -4,7 +4,7 @@ use warnings;
 
 package CPAN::Distribution::ReleaseHistory::ReleaseIterator;
 
-our $VERSION = '0.002004';
+our $VERSION = '0.002005';
 
 # ABSTRACT: A container to iterate a collection of releases for a single distribution
 

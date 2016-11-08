@@ -1,6 +1,8 @@
 Release history for CPAN-Distribution-ReleaseHistory
 
 {{$NEXT}}
+
+0.002004 2016-11-08T09:19:00Z 4349a15
  [Bugfix / #1]
  - Fix interoperability with new ES 5.0 Client libraries.
  - Closes https://github.com/kentnl/CPAN-Distribution-ReleaseHistory/issues/1
