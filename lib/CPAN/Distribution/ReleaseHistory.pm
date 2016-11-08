@@ -4,7 +4,7 @@ use warnings;
 
 package CPAN::Distribution::ReleaseHistory;
 
-our $VERSION = '0.002003';
+our $VERSION = '0.002004';
 
 # ABSTRACT: Show the release history of a single distribution
 
@@ -170,15 +170,22 @@ sub _mk_fields {
   return [qw(name version date status maturity stat download_url )];
 }
 
+sub _es_version {
+  my ( $self, $wanted_version ) = @_;
+  local $@ = undef;
+  return eval { $self->es->VERSION($wanted_version); 1 };    ## no critic (RequireCheckingReturnValueOfEval)
+}
+
 sub _mk_scroll_args {
   my ($self) = @_;
+
   my %scrollargs = (
     scroll => '5m',
     index  => 'v0',
     type   => 'release',
     size   => $self->scroll_size,
     body   => $self->_mk_body,
-    fields => $self->_mk_fields,
+    ( $self->_es_version(5) ? 'stored_fields' : 'fields' ) => $self->_mk_fields,
   );
 
   if ( not $self->sort ) {
@@ -192,7 +199,9 @@ sub _mk_query_distribution {
 
   my %scrollargs = %{ $self->_mk_scroll_args };
 
-  require Search::Elasticsearch::Scroll;
+  ( $self->_es_version(5) )
+    ? ( require Search::Elasticsearch::Client::5_0::Scroll )
+    : ( require Search::Elasticsearch::Scroll );
 
   return $self->es->scroll_helper(%scrollargs);
 }
@@ -213,7 +222,7 @@ CPAN::Distribution::ReleaseHistory - Show the release history of a single distri
 
 =head1 VERSION
 
-version 0.002003
+version 0.002004
 
 =head1 SYNOPSIS
 
@@ -326,7 +335,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2016 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
