@@ -4,11 +4,13 @@
 .perltidyrc
 .travis.yml
 Changes
+INSTALL.SKIP
 LICENSE
 MANIFEST
 META.json
 META.yml
 Makefile.PL
+README
 dist.ini
 dist.ini.meta
 examples/bench.pl
@@ -25,6 +27,7 @@ misc/Changes.deps
 misc/Changes.deps.all
 misc/Changes.deps.dev
 misc/Changes.deps.opt
+misc/built_with.json
 misc/perlcritic.deps
 perlcritic.rc
 t/00-compile/lib_CPAN_Distribution_ReleaseHistory_ReleaseIterator_pm.t
