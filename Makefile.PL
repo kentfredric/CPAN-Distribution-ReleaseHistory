@@ -20,7 +20,6 @@ my %WriteMakefileArgs = (
     "CPAN::DistnameInfo" => 0,
     "Moo" => "1.000008",
     "Search::Elasticsearch" => 0,
-    "Search::Elasticsearch::Scroll" => 0,
     "strict" => 0,
     "warnings" => 0
   },
@@ -44,7 +43,6 @@ my %FallbackPrereqs = (
   "File::Spec" => 0,
   "Moo" => "1.000008",
   "Search::Elasticsearch" => 0,
-  "Search::Elasticsearch::Scroll" => 0,
   "Test::Fatal" => 0,
   "Test::More" => "0.89",
   "Test::RequiresInternet" => 0,

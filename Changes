@@ -1,10 +1,16 @@
 Release history for CPAN-Distribution-ReleaseHistory
 
 {{$NEXT}}
+ [Bugfix / #1]
+ - Fix interoperability with new ES 5.0 Client libraries.
+ - Closes https://github.com/kentnl/CPAN-Distribution-ReleaseHistory/issues/1
+ - Thanks to Slaven Rezić for report
+
  [Dependencies::Stats]
  - Dependencies changed since 0.002003, see misc/*.deps* for details
  - configure: (recommends: ↓1)
- - develop: +9 ↑3 -2 (recommends: ↓1, suggests: ↑2)
+ - develop: +10 ↑3 -2 (recommends: ↓1, suggests: ↑2)
+ - runtime: -1
  - test: (recommends: ↓2)
 
 0.002003 2014-11-12T16:48:51Z 1c14e8a
