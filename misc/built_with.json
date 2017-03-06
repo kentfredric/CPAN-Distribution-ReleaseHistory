@@ -1,7 +1,4 @@
 {
-   "failures" : {
-      "Search::Elasticsearch" : "module was not found in INC"
-   },
    "modules" : {
       "CPAN::DistnameInfo" : "0.12",
       "CPAN::Meta" : "2.150010",
@@ -63,6 +60,7 @@
       "File::Spec" : "3.66",
       "Moo" : "2.003000",
       "Pod::Coverage::TrustPod" : "0.100003",
+      "Search::Elasticsearch" : "5.01",
       "Software::License::Perl_5" : "0.103012",
       "Test::CPAN::Changes" : "0.400002",
       "Test::CPAN::Meta" : "0.25",

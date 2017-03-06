@@ -125,15 +125,15 @@
    "provides" : {
       "CPAN::Distribution::ReleaseHistory" : {
          "file" : "lib/CPAN/Distribution/ReleaseHistory.pm",
-         "version" : "0.002005"
+         "version" : "0.002006"
       },
       "CPAN::Distribution::ReleaseHistory::Release" : {
          "file" : "lib/CPAN/Distribution/ReleaseHistory/Release.pm",
-         "version" : "0.002005"
+         "version" : "0.002006"
       },
       "CPAN::Distribution::ReleaseHistory::ReleaseIterator" : {
          "file" : "lib/CPAN/Distribution/ReleaseHistory/ReleaseIterator.pm",
-         "version" : "0.002005"
+         "version" : "0.002006"
       }
    },
    "release_status" : "stable",
@@ -148,7 +148,7 @@
          "web" : "https://github.com/kentnl/CPAN-Distribution-ReleaseHistory"
       }
    },
-   "version" : "0.002005",
+   "version" : "0.002006",
    "x_BuiltWith" : {
       "external_file" : "misc/built_with.json"
    },
@@ -680,7 +680,7 @@
                   "branch" : null,
                   "changelog" : "Changes",
                   "signed" : 0,
-                  "tag" : "0.002005-source",
+                  "tag" : "0.002006-source",
                   "tag_format" : "%v-source",
                   "tag_message" : "v%v"
                },
@@ -774,7 +774,7 @@
                   "branch" : "releases",
                   "changelog" : "Changes",
                   "signed" : 0,
-                  "tag" : "0.002005",
+                  "tag" : "0.002006",
                   "tag_format" : "%v",
                   "tag_message" : "v%v"
                },
