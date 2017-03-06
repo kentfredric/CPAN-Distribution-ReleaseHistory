@@ -4,7 +4,7 @@ use warnings;
 
 package CPAN::Distribution::ReleaseHistory;
 
-our $VERSION = '0.002005';
+our $VERSION = '0.002006';
 
 # ABSTRACT: Show the release history of a single distribution
 

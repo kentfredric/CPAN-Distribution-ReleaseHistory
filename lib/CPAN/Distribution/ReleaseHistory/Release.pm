@@ -4,7 +4,7 @@ use warnings;
 
 package CPAN::Distribution::ReleaseHistory::Release;
 
-our $VERSION = '0.002005';
+our $VERSION = '0.002006';
 
 # ABSTRACT: A container for release data
 
